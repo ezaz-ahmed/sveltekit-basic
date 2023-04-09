@@ -2,7 +2,10 @@
 	import '@skeletonlabs/skeleton/themes/theme-crimson.css';
 	import '@skeletonlabs/skeleton/styles/all.css';
 	import '../app.postcss';
-	import { AppBar, AppShell } from '@skeletonlabs/skeleton';
+	import { AppBar, AppShell, storeHighlightJs } from '@skeletonlabs/skeleton';
+	import hljs from 'highlight.js';
+	import 'highlight.js/styles/atom-one-dark.css';
+	storeHighlightJs.set(hljs);
 </script>
 
 <AppShell>
