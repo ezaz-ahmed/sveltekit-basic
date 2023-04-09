@@ -17,5 +17,6 @@ interface CodeSnippetInput {
 interface CodeSnippet {
 	title: string;
 	language: string;
+	code: string;
 	favorite: boolean;
 }

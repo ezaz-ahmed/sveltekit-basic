@@ -1,8 +1,6 @@
 <script lang="ts">
 	import CodeSnippetCard from '../CodeSnippetCard.svelte';
-	// import { snippetStore, addSnippet } from '../SnippetStore';
-	// import type { PageData } from './$types';
-	// export let data: PageData;
+	import { addSnippet, snippetStore } from '../SnippetStore';
 
 	let formData: CodeSnippetInput = {
 		title: '',
@@ -10,7 +8,14 @@
 		code: ''
 	};
 
-	// snippetStore.set(data.snippets);
+	snippetStore.set([
+		{
+			title: 'Coupter Code',
+			language: 'html',
+			code: '<div> Creative Dive </div>',
+			favorite: false
+		}
+	]);
 </script>
 
 <div class="flex justify-center">
@@ -40,15 +45,21 @@
 					class="textarea"
 					rows="4"
 					placeholder="Enter your snippet code here..."
-					bind:value={formData.title}
+					bind:value={formData.code}
 				/>
 			</label>
-			<button type="button" class="btn btn-sm variant-filled-primary">Create Snippet</button>
+			<button
+				type="button"
+				class="btn btn-sm variant-filled-primary"
+				on:click={() => addSnippet(formData)}>Create Snippet</button
+			>
 		</div>
 		<div class="text-center py-6">
 			<h2>My Code Snippets</h2>
 		</div>
 
-		<CodeSnippetCard />
+		{#each $snippetStore as snippet, index}
+			<CodeSnippetCard {snippet} {index} />
+		{/each}
 	</div>
 </div>
