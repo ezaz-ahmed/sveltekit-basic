@@ -1,6 +1,9 @@
 <script lang="ts">
 	import CodeSnippetCard from '../CodeSnippetCard.svelte';
 	import { addSnippet, snippetStore } from '../SnippetStore';
+	import type { PageData } from './$types';
+
+	export let data: PageData;
 
 	let formData: CodeSnippetInput = {
 		title: '',
@@ -8,14 +11,7 @@
 		code: ''
 	};
 
-	snippetStore.set([
-		{
-			title: 'Coupter Code',
-			language: 'html',
-			code: '<div> Creative Dive </div>',
-			favorite: false
-		}
-	]);
+	snippetStore.set(data.snippets);
 </script>
 
 <div class="flex justify-center">
